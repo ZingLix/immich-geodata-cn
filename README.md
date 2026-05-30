@@ -10,6 +10,10 @@
 
 ![](./image/example.png)
 
+## PROMO
+
+我最近做了款 App 叫 [Sillage](https://github.com/ZingLix/Sillage/blob/main/README.zh-CN.md)，可以自动记录足迹、飞行、火车、酒店，和照片一起变成时间轴回忆旅程，感兴趣可以看看，喜欢旅行的一定不能错过~
+
 # 如何使用
 
 ### 1. 下载数据
