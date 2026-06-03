@@ -32,6 +32,7 @@ converter_t2s = opencc.OpenCC("t2s")  # 繁体转简体
 converter_s2t = opencc.OpenCC("s2t")  # 简体转繁体
 
 country_code_map = {"MO": "澳门特别行政区", "HK": "香港特别行政区"}
+countries_without_admin1 = {"SG", "VA"}
 
 admin_1_set = set()
 with open("./geoname_data/admin1CodesASCII.txt", "r", encoding="utf-8") as f:
@@ -118,7 +119,7 @@ def translate_cities500():
             longitude = str(row[5])  # 经度
 
             admin1_code = row[10]
-            if country_code != "SG":
+            if country_code not in countries_without_admin1:
                 if not admin1_code or f"{country_code}.{admin1_code}" not in admin_1_set:
                     continue
 
