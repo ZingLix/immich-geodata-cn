@@ -67,7 +67,7 @@ for item in "${LIST[@]}"; do
 done
 
 # 准备列表并运行 generate_geodata_nominatim.py
-LIST=("JP")
+LIST=("JP" "IT")
 for item in "${LIST[@]}"; do
     echo "运行 python generate_geodata_nominatim.py $item..."
     python generate_geodata_nominatim.py --country-code "$item"

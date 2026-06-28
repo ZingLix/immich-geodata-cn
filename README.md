@@ -12,7 +12,7 @@
 
 ## PROMO
 
-我最近做了款 App 叫 [Sillage](https://github.com/ZingLix/Sillage/blob/main/README.zh-CN.md)，可以自动记录足迹、飞行、火车、酒店，和照片一起变成时间轴回忆旅程，感兴趣可以看看，喜欢旅行的一定不能错过~
+我最近做了款 App 叫 [Sillage](https://github.com/ZingLix/Sillage/blob/main/README.zh-CN.md)，可以自动记录足迹、飞行、火车、酒店，和照片一起变成时间轴回忆旅程，支持连接 Immich 管理照片，感兴趣可以看看，喜欢旅行的一定不能错过~
 
 <p align="center">
   <img src="https://github.com/ZingLix/Sillage/blob/main/imgs/hero.png?raw=true" alt="Sillage icon" width="640" />
