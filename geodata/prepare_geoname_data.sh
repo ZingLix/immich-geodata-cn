@@ -12,7 +12,7 @@ GEOJESON_FILE="$TARGET_DIR/ne_10m_admin_0_countries.geojson"
 EXTRA_DATA_DIR="$TARGET_DIR/extra_data"
 DOWNLOAD_URL="https://download.geonames.org/export/dump/cities500.zip"
 # 需要增加全量数据的地区列表
-LIST=("CN" "HK" "TW" "MO")
+LIST=("CN" "HK" "TW" "MO" "IT")
 
 if [[ "$1" == "--update" ]]; then
     if [[ -d "$TARGET_DIR" ]]; then
