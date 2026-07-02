@@ -67,10 +67,10 @@ for item in "${LIST[@]}"; do
 done
 
 # 准备列表并运行 generate_geodata_nominatim.py
-LIST=("JP" "IT")
+LIST=("JP")
 for item in "${LIST[@]}"; do
     echo "运行 python generate_geodata_nominatim.py $item..."
-    python generate_geodata_nominatim.py --country-code "$item"  --data-file ./geoname_data/cities500.txt.tmp
+    python generate_geodata_nominatim.py --country-code "$item"
     if [[ $? -ne 0 ]]; then
         echo "运行 python generate_geodata_nominatim.py --country-code $item 失败！退出。"
         exit 1
