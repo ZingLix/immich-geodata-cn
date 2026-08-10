@@ -21,7 +21,7 @@
 # 如何使用
 
 ### 1. 下载数据
-在 [Release 页面](https://github.com/ZingLix/immich-geodata-cn/releases/latest) 下载并解压 geodata.zip。使用尚未通过 `countryInfo.txt` 读取国家名称的旧版 Immich 时，还需要下载并解压 i18n-iso-countries.zip。
+在 [Release 页面](https://github.com/ZingLix/immich-geodata-cn/releases/latest) 下载 geodata.zip 和 i18n-iso-countries.zip 两个文件并解压
 
 数据发布分为以下两类：  
 - 🔄 [**自动更新版**](https://github.com/ZingLix/immich-geodata-cn/releases/tag/auto-release)：更新更频繁，推荐使用。但由于数据源可能发生变化，偶尔会导致生成的文件不可用。如遇问题可切换至手动发布版并提交 issue。  
@@ -54,11 +54,7 @@
 如果使用的是官方 `immich-app/immich-server` 镜像，修改路径如下
 
 ```yaml
-# 使用 countryInfo.txt 的版本（预计 Immich 3.2.0+）
-volumes:
-  - ./geodata:/build/geodata
-
-# 1.136.0 <= Immich 版本 < 3.2.0
+# immich 版本 >= 1.136.0
 volumes:
   - ./geodata:/build/geodata
   - ./i18n-iso-countries/langs:/usr/src/app/server/node_modules/i18n-iso-countries/langs
@@ -71,12 +67,7 @@ volumes:
 
 如果使用的是 `imagegenius/immich` 镜像，修改路径如下（感谢 huazhaozhe [#18](https://github.com/ZingLix/immich-geodata-cn/discussions/18)）
 
-```yaml
-# 使用 countryInfo.txt 的版本（预计 Immich 3.2.0+）
-volumes:
-  - ./geodata:/app/immich/data/geodata
-
-# 尚未通过 countryInfo.txt 读取国家名称的版本
+```
 volumes:
   - ./geodata:/app/immich/data/geodata
   - ./i18n-iso-countries/langs:/app/immich/server/node_modules/i18n-iso-countries/langs

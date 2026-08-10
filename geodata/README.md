@@ -43,7 +43,6 @@ Immich 进行逆向编码依赖如下文件（在 `/build/geodata` 文件夹中�
 - admin1CodesASCII.txt：一级行政区划列表（`id | name | name ascii | geoname id`）
 - admin2Codes.txt：二级行政区划列表（`id | name | name ascii | geoname id`）
 - cities500.txt：所有人口大于 500 的城市列表
-- countryInfo.txt：国家信息列表（国家名称位于第 5 列）
 - geodata-date.txt：数据更新时间
 - ne_10m_admin_0_countries.geojson：自然地球国家划分，详细介绍可以 [看这](https://github.com/nvkelso/natural-earth-vector/tree/master)
 
@@ -51,17 +50,16 @@ Immich 会根据照片的经纬度信息，转换成 **国家、省份、城市*
 
 - 从 cities500.txt 中找到最近的点，拿到他的名称作为 **城市**
 - 根据这个点的 admin1Code 信息，去 admin1CodesASCII.txt 文件中找到 **省份** 级别的名称
-- 根据这个点的 countryCode，从 countryInfo.txt 中找到 **国家** 级别名称；旧版 Immich 则使用 [node-i18n-iso-countries](https://github.com/michaelwittig/node-i18n-iso-countries) 转换
+- 根据这个点的 countryCode，用 [node-i18n-iso-countries](https://github.com/michaelwittig/node-i18n-iso-countries) 转换成 **国家** 级别名称
 
 > 没错，admin2Name 根本没用上，admin2Codes.txt 也没用
 
 因此，要进行汉化，只需要
 
 - 将 cities500.txt 和 admin1CodesASCII.txt 中的名称进行汉化
-- 将 countryInfo.txt 中的国家名称进行汉化
-- 为旧版 Immich 保留汉化后的 [node-i18n-iso-countries](https://github.com/michaelwittig/node-i18n-iso-countries) 数据
+- 将 [node-i18n-iso-countries](https://github.com/michaelwittig/node-i18n-iso-countries) 库中的数据进行汉化
 
-旧版 [Immich 代码](https://github.com/immich-app/immich/blob/1311189fab958bea2177a92e1cc1b7ebb1822bd8/server/src/repositories/map.repository.ts#L131) 中将国家码转换固定写死为 `'en'`，因此只能把 [node-i18n-iso-countries](https://github.com/michaelwittig/node-i18n-iso-countries) 库中的 `en.json` 修改为 `zh.json` 中的中文数据，修改后的数据 [在这里](https://github.com/ZingLix/immich-geodata-cn/blob/main/i18n-iso-countries/langs/en.json)。新版本会直接读取 geodata 中的 countryInfo.txt，本仓库生成数据时会使用同一份中文国家名映射改写其第 5 列。
+[Immich 代码](https://github.com/immich-app/immich/blob/1311189fab958bea2177a92e1cc1b7ebb1822bd8/server/src/repositories/map.repository.ts#L131) 中将国家码转换固定写死了转换成 `'en'`，因此只能把 [node-i18n-iso-countries](https://github.com/michaelwittig/node-i18n-iso-countries) 库中的 `en.json` 修改为 `zh.json` 中的中文数据了，修改后的数据 [在这](https://github.com/ZingLix/immich-geodata-cn/blob/main/i18n-iso-countries/langs/en.json)。
 
 ## 汉化地理数据
 
