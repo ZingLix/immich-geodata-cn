@@ -8,6 +8,7 @@ ZIP_FILE="$TARGET_DIR/cities500.zip"
 TXT_FILE="$TARGET_DIR/cities500.txt"
 ADMIN1_FILE="$TARGET_DIR/admin1CodesASCII.txt"
 ADMIN2_FILE="$TARGET_DIR/admin2Codes.txt"
+COUNTRY_INFO_FILE="$TARGET_DIR/countryInfo.txt"
 GEOJESON_FILE="$TARGET_DIR/ne_10m_admin_0_countries.geojson"
 EXTRA_DATA_DIR="$TARGET_DIR/extra_data"
 DOWNLOAD_URL="https://download.geonames.org/export/dump/cities500.zip"
@@ -75,6 +76,16 @@ fi
 # 下载文件
 echo "正在下载 $ADMIN2_FILE..."
 curl -o "$ADMIN2_FILE" "https://download.geonames.org/export/dump/admin2Codes.txt"
+
+# 检查下载是否成功
+if [[ $? -ne 0 ]]; then
+  echo "下载失败，请检查网络连接或URL是否正确。"
+  exit 1
+fi
+
+# 下载国家信息文件
+echo "正在下载 $COUNTRY_INFO_FILE..."
+curl -fL -o "$COUNTRY_INFO_FILE" "https://download.geonames.org/export/dump/countryInfo.txt"
 
 # 检查下载是否成功
 if [[ $? -ne 0 ]]; then
