@@ -87,6 +87,13 @@ if [[ $? -ne 0 ]]; then
     exit 1
 fi
 
+echo "翻译 geoname_data/countryInfo.txt 中的国家名称..."
+python translate_country_info.py --input ./geoname_data/countryInfo.txt --output "$OUTPUT_FOLDER/countryInfo.txt"
+if [[ $? -ne 0 ]]; then
+    echo "翻译 countryInfo.txt 失败！退出。"
+    exit 1
+fi
+
 
 # 复制 geojson 文件到 output 文件夹
 echo "复制 geoname_data/ne_10m_admin_0_countries.geojson 到 output 文件夹..."
